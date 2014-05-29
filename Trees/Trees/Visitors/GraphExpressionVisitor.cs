@@ -16,30 +16,18 @@ namespace Trees.Visitors
 
         protected override Expression VisitLambda<T>(Expression<T> node)
         {
-            try
-            {
-                return base.Visit(node.Body);
-            }
-            finally
-            {
-            }
+            return base.Visit(node.Body);
         }
 
         protected override Expression VisitBinary(BinaryExpression node)
         {
-            try
-            {
-                var n = new Node(node.GetHashCode(), node.NodeType.ToString());
-                _nodes.Add(n);
-                var left = new Node(node.Left.GetHashCode(), node.Left.NodeType.ToString());
-                var right = new Node(node.Right.GetHashCode(), node.Right.NodeType.ToString());
-                _edges.Add(new Edge(n, left));
-                _edges.Add(new Edge(n, right));
-                return base.VisitBinary(node);
-            }
-            finally
-            {
-            }
+            var n = new Node(node.GetHashCode(), node.NodeType.ToString());
+            _nodes.Add(n);
+            var left = new Node(node.Left.GetHashCode(), node.Left.NodeType.ToString());
+            var right = new Node(node.Right.GetHashCode(), node.Right.NodeType.ToString());
+            _edges.Add(new Edge(n, left));
+            _edges.Add(new Edge(n, right));
+            return base.VisitBinary(node);
         }
 
         protected override Expression VisitUnary(UnaryExpression node)
@@ -61,12 +49,6 @@ namespace Trees.Visitors
         {
             _nodes.Add(new Node(node.GetHashCode(), node.Value.ToString()));
             return base.VisitConstant(node);
-        }
-
-        protected override Expression VisitMember(MemberExpression node)
-        {
-            Console.WriteLine("Member: " + node.Member + " " + node.Member.DeclaringType.Name);
-            return base.VisitMember(node);
         }
 
         public override string ToString()
@@ -104,10 +86,7 @@ namespace Trees.Visitors
                                 };
             var p = Process.Start(startInfo);
             p.WaitForExit();
-            var f = dotFilePath + ".png";
-            Console.WriteLine(f);
-            var image = Image.FromFile(dotFilePath + ".png");
-            return image;
+            return Image.FromFile(dotFilePath + ".png");
         }
     }
 }

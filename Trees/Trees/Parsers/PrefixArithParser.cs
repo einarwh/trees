@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Trees
+namespace Trees.Parsers
 {
     public class PrefixArithParser : ArithParser
     {

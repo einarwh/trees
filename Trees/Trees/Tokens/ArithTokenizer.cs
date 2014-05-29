@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Trees
+namespace Trees.Tokens
 {
     public class ArithTokenizer : IEnumerator<string>
     {

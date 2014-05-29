@@ -1,4 +1,4 @@
-﻿namespace Trees
+﻿namespace Trees.Tokens
 {
     public static class CharExtensions
     {

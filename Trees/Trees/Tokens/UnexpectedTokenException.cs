@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Trees
+namespace Trees.Tokens
 {
     public class UnexpectedTokenException : Exception
     {
